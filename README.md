@@ -1,42 +1,42 @@
-# 🌤️ WeatherSphere
+#  WeatherSphere
 
 A **premium, feature-rich weather dashboard** built with **Vanilla JavaScript, HTML, and CSS**. WeatherSphere provides real-time weather updates, interactive forecasts, beautiful animations, and an elegant user experience.
 
 ---
 
-# ✨ Features
+#  Features
 
-## 🌍 Current Weather
+##  Current Weather
 
-- 🌡️ Real-time temperature with **Celsius/Fahrenheit** toggle
-- ☁️ Detailed weather conditions with animated icons
-- 🤗 Feels-like temperature
-- 💧 Humidity
-- 🌬️ Wind Speed
-- 📊 Atmospheric Pressure
-- 👀 Visibility
-- ☀️ UV Index
-- ☁️ Cloud Cover
-- 🌅 Sunrise & Sunset times
-- 🕒 Last Updated timestamp
+-  Real-time temperature with **Celsius/Fahrenheit** toggle
+-  Detailed weather conditions with animated icons
+-  Feels-like temperature
+-  Humidity
+-  Wind Speed
+-  Atmospheric Pressure
+-  Visibility
+-  UV Index
+-  Cloud Cover
+-  Sunrise & Sunset times
+-  Last Updated timestamp
 
 ---
 
-## 📈 Advanced Visualizations
+##  Advanced Visualizations
 
-### 📊 Interactive Temperature Chart
+###  Interactive Temperature Chart
 
 - 24-hour temperature trend
 - "Feels Like" comparison
 - Powered by **Chart.js**
 
-### 🕐 Hourly Forecast
+###  Hourly Forecast
 
 - 24-hour weather breakdown
 - Weather icons
 - Temperature details
 
-### 📅 5-Day Forecast
+###  5-Day Forecast
 
 - High & Low temperatures
 - Humidity information
@@ -44,61 +44,61 @@ A **premium, feature-rich weather dashboard** built with **Vanilla JavaScript, H
 
 ---
 
-# 🎨 Premium UI/UX
+#  Premium UI/UX
 
-- ✨ Animated Gradient Background
-- 🎈 Floating Particle System
-- 🌙 Dark & Light Theme Toggle
-- 🪟 Glassmorphism Design
-- 📱 Fully Responsive Layout
-- ⚡ Smooth Animations & Hover Effects
-- ⏳ Beautiful Loading States
+-  Animated Gradient Background
+-  Floating Particle System
+-  Dark & Light Theme Toggle
+-  Glassmorphism Design
+-  Fully Responsive Layout
+-  Smooth Animations & Hover Effects
+-  Beautiful Loading States
 
 ---
 
-# 🚀 Smart Features
+#  Smart Features
 
-### 🎤 Voice Search
+###  Voice Search
 
 Search any city using the **Web Speech API**.
 
-### 📍 Current Location
+###  Current Location
 
 Automatically fetch weather using your current location.
 
-### ❤️ Favorites
+###  Favorites
 
 - Save favorite cities
 - Stored using **LocalStorage**
 - One-click access
 
-### ↔️ Compare Cities
+###  Compare Cities
 
 Compare weather conditions between multiple cities.
 
-### 📤 Share Weather
+###  Share Weather
 
 - Web Share API
 - Clipboard support
 
-### ⚠️ Weather Alerts
+###  Weather Alerts
 
 Display severe weather notifications when available.
 
 ---
 
-# 🌙 Ambient Experience
+#  Ambient Experience
 
-- 🎵 Dynamic Ambient Sounds
-- 🌕 Moon Phase Indicator
-- 🌼 Seasonal Pollen Count
-- 🌫️ Air Quality Index (AQI)
+-  Dynamic Ambient Sounds
+-  Moon Phase Indicator
+-  Seasonal Pollen Count
+-  Air Quality Index (AQI)
 
 Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-# ⌨️ Keyboard Shortcuts
+#  Keyboard Shortcuts
 
 | Shortcut | Action |
 |-----------|--------|
@@ -108,7 +108,7 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-# 🛠️ Technologies Used
+#  Technologies Used
 
 - HTML5
 - CSS3
@@ -124,9 +124,9 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-# 📖 Usage
+#  Usage
 
-## 🔍 Basic Search
+##  Basic Search
 
 1. Enter a city name.
 2. Press **Enter** or click the search button.
@@ -134,7 +134,7 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-## 🎤 Voice Search
+##  Voice Search
 
 1. Click the microphone icon.
 2. Speak the city name.
@@ -142,7 +142,7 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-## ❤️ Favorites
+##  Favorites
 
 1. Click the heart icon.
 2. Saved cities appear in the favorites section.
@@ -150,7 +150,7 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-## ↔️ Compare Cities
+##  Compare Cities
 
 1. Click the compare button.
 2. Compare weather information.
@@ -158,13 +158,13 @@ Ambient sounds automatically adapt based on the current weather.
 
 ---
 
-## 🌙 Theme Toggle
+##  Theme Toggle
 
 Switch between **Dark Mode** and **Light Mode** using the theme button.
 
 ---
 
-## 🌡️ Temperature Units
+##  Temperature Units
 
 Toggle between:
 
@@ -173,13 +173,13 @@ Toggle between:
 
 ---
 
-## 🎵 Ambient Sound
+##  Ambient Sound
 
 Click the music icon to enable immersive weather-based sound effects.
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 weathersphere-pro/
@@ -193,7 +193,7 @@ weathersphere-pro/
 
 ---
 
-# 🌐 API Reference
+#  API Reference
 
 WeatherSphere uses the **OpenWeatherMap API**.
 
@@ -217,7 +217,7 @@ https://api.openweathermap.org/data/2.5/air_pollution
 
 ---
 
-# 📦 Sample Response
+# Sample Response
 
 ```javascript
 {
@@ -254,7 +254,7 @@ https://api.openweathermap.org/data/2.5/air_pollution
 
 ---
 
-# 🎨 Customization
+# Customization
 
 ## Change Theme Colors
 
@@ -298,7 +298,7 @@ const sounds = {
 
 ---
 
-# 🌐 Browser Support
+#  Browser Support
 
 | Browser | Supported |
 |----------|-----------|
@@ -310,7 +310,7 @@ const sounds = {
 
 ---
 
-# 🤝 Contributing
+# Contributing
 
 Contributions are welcome!
 
@@ -337,7 +337,7 @@ git push origin feature/AmazingFeature
 
 ---
 
-# 📌 Development Guidelines
+#  Development Guidelines
 
 - Follow ES6+ JavaScript standards.
 - Maintain clean code.
@@ -348,38 +348,38 @@ git push origin feature/AmazingFeature
 
 ---
 
-# 📄 License
+#  License
 
 This project is licensed under the **MIT License**.
 
 ---
 
-# 🙌 Credits
+#  Credits
 
-- 🌦️ Weather Data — OpenWeatherMap
-- 📊 Charts — Chart.js
-- 🎨 Icons — Font Awesome
-- 🔤 Fonts — Google Fonts (Inter)
+-  Weather Data — OpenWeatherMap
+-  Charts — Chart.js
+-  Icons — Font Awesome
+-  Fonts — Google Fonts (Inter)
 
 ---
 
-# 💼 About
+#  About
 
 **WeatherSphere** was developed as an internship project for **Optimus Automate**, showcasing modern frontend development, REST API integration, responsive design, animations, and premium UI/UX using only HTML, CSS, and Vanilla JavaScript.
 
 ---
 
-# 📧 Contact
+#  Contact
 
 **Developer:** Areesha Kanwal
 
-📩 Email: **areeshakanwal024@gmail.com**
+ Email: **areeshakanwal024@gmail.com**
 
-🐙 GitHub: **@areeshakanwal-dev**
+ GitHub: **@areeshakanwal-dev**
 
 ---
 
-# ❤️ Acknowledgments
+#  Acknowledgments
 
 Special thanks to:
 
