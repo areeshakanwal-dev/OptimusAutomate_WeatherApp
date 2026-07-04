@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere Pro | Premium Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <!-- Chart.js for weather timeline -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Animated Gradient Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <!-- Floating Particles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Ambient Sound Player -->
+    <div class="ambient-sound" id="ambientSound">
+        <button id="soundToggle" class="sound-btn" title="Toggle Ambient Sound">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherSphere </span>
+            </div>
+            <div class="header-actions">
+                <button id="voiceSearchBtn" class="voice-btn" title="Voice Search">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="shareBtn" class="share-btn" title="Share Weather">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button id="themeToggle" class="theme-toggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="live-clock">
+                    <div class="time" id="liveTime">--:--</div>
+                    <div class="date" id="liveDate">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Bar -->
+        <div class="quick-stats" id="quickStats" style="display: none;">
+            <div class="quick-stat">
+                <i class="fas fa-temperature-high"></i>
+                <span id="quickHigh">--°</span>
+                <label>High</label>
+            </div>
+            <div class="quick-stat">
+                <i class="fas fa-temperature-low"></i>
+                <span id="quickLow">--°</span>
+                <label>Low</label>
+            </div>
+            <div class="quick-stat">
+                <i class="fas fa-sun"></i>
+                <span id="quickSunrise">--</span>
+                <label>Sunrise</label>
+            </div>
+            <div class="quick-stat">
+                <i class="fas fa-moon"></i>
+                <span id="quickSunset">--</span>
+                <label>Sunset</label>
+            </div>
+            <div class="quick-stat">
+                <i class="fas fa-umbrella"></i>
+                <span id="quickRain">0%</span>
+                <label>Rain</label>
+            </div>
+            <div class="quick-stat">
+                <i class="fas fa-leaf"></i>
+                <span id="quickPollen">--</span>
+                <label>Pollen</label>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-wrapper">
+            <div class="search-glass">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cityInput" placeholder="Search any city..." spellcheck="false">
+                <button id="searchBtn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="search-actions">
+                <button id="locationBtn" class="location-pill">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Current Location</span>
+                </button>
+                <button id="favoriteBtn" class="favorite-pill" title="Add to Favorites">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button id="compareBtn" class="compare-pill" title="Compare Cities">
+                    <i class="fas fa-code-branch"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Favorites Bar -->
+        <div class="favorites-bar" id="favoritesBar" style="display: none;">
+            <span><i class="fas fa-star"></i> Favorites:</span>
+            <div id="favoritesList" class="favorites-list"></div>
+        </div>
+
+        <!-- Compare Section -->
+        <div id="compareSection" class="compare-section" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-code-branch"></i>
+                <h3>Compare Cities</h3>
+                <button id="closeCompare" class="close-compare">✕</button>
+            </div>
+            <div id="compareGrid" class="compare-grid"></div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading" class="loading-screen" style="display: none;">
+            <div class="loader-ring"></div>
+            <p>Fetching weather magic...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="error-toast" style="display: none;"></div>
+
+        <!-- Current Weather -->
+        <div id="currentWeather" class="weather-master" style="display: none;">
+            <div class="weather-glow"></div>
+            <div class="weather-main-card">
+                <div class="weather-header">
+                    <div class="location-badge">
+                        <i class="fas fa-map-pin"></i>
+                        <span id="cityName">City</span>
+                        <span class="country" id="countryCode"></span>
+                        <button id="refreshBtn" class="refresh-btn" title="Refresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="last-updated" id="lastUpdated">Updated: --</div>
+                </div>
+
+                <div class="temp-section">
+                    <div class="weather-icon-large">
+                        <img id="weatherIcon" alt="weather">
+                    </div>
+                    <div class="temp-display">
+                        <span class="temp-value" id="temp">--</span>
+                        <span class="temp-unit">°C</span>
+                        <div class="temp-toggle">
+                            <button id="tempToggle" class="temp-toggle-btn">°F</button>
+                        </div>
+                    </div>
+                    <div class="weather-condition" id="description">---</div>
+                    <div class="feels-like" id="feelsLikeText">Feels like --°</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-tint"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Humidity</span>
+                            <span class="stat-value" id="humidity">--%</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-wind"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Wind Speed</span>
+                            <span class="stat-value" id="windSpeed">-- km/h</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-compress-alt"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Pressure</span>
+                            <span class="stat-value" id="pressure">-- hPa</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Visibility</span>
+                            <span class="stat-value" id="visibility">-- km</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-thermometer-half"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">UV Index</span>
+                            <span class="stat-value" id="uvIndex">--</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Cloud Cover</span>
+                            <span class="stat-value" id="cloudCover">--%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Air Quality -->
+                <div class="air-quality" id="airQuality" style="display: none;">
+                    <div class="aqi-header">
+                        <i class="fas fa-leaf"></i>
+                        <span>Air Quality Index</span>
+                        <span class="aqi-value" id="aqiValue">--</span>
+                    </div>
+                    <div class="aqi-bar">
+                        <div class="aqi-fill" id="aqiFill" style="width: 0%;"></div>
+                    </div>
+                    <div class="aqi-label" id="aqiLabel">Loading...</div>
+                </div>
+
+                <!-- Moon Phase & Pollen -->
+                <div class="extra-widgets">
+                    <div class="widget moon-phase" id="moonPhase">
+                        <i class="fas fa-moon"></i>
+                        <span>Moon Phase: <strong id="moonPhaseText">--</strong></span>
+                    </div>
+                    <div class="widget pollen-count" id="pollenWidget">
+                        <i class="fas fa-leaf"></i>
+                        <span>Pollen: <strong id="pollenLevel">--</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Timeline Chart -->
+        <div class="weather-chart" id="weatherChart" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <h3>Temperature Trend</h3>
+            </div>
+            <canvas id="tempChart"></canvas>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div id="hourlyForecast" class="hourly-forecast" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-clock"></i>
+                <h3>24-Hour Forecast</h3>
+            </div>
+            <div id="hourlyGrid" class="hourly-grid"></div>
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div id="forecast" class="forecast-premium" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>5-Day Forecast</h3>
+            </div>
+            <div id="forecastGrid" class="forecast-3d"></div>
+        </div>
+
+        <!-- Weather Alerts -->
+        <div id="weatherAlerts" class="weather-alerts" style="display: none;">
+            <div class="section-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Weather Alerts</h3>
+            </div>
+            <div id="alertsList" class="alerts-list"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Powered by OpenWeatherMap</p>
+            <p class="credit">Optimus Automate · Internship Project</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
